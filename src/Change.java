@@ -19,13 +19,15 @@ public class Change {
 			String[] split = scan.nextLine().split(" ");
 			double a = Double.parseDouble(split[0]);
 			double b = Double.parseDouble(split[1]);
-			if (((Math.round(a) + 1.0) - a == 1.0) || ((Math.round(b) + 1.0) - b == 1.0)) {
+			if ((((int) a + 1.0) - a == 1.0) || (((int) b + 1.0) - b == 1.0)) {
 				printLine("0-0-0-0-0");
 			} else {
 				int aC = 100 - Integer.parseInt(split[0].substring(split[0].indexOf('.') + 1));
 				int bC = 100 - Integer.parseInt(split[1].substring(split[1].indexOf('.') + 1));
 				if (coins(bC) > coins(aC)) {
 					printLine(change(bC));
+				} else if (coins(bC) == coins(aC)) {
+					printLine(compare(change(aC), change(bC)));
 				} else {
 					printLine(change(aC));
 				}
@@ -67,6 +69,13 @@ public class Change {
 			}
 		}
 		return h + "-" + q + "-" + d + "-" + n + "-" + p;
+	}
+	
+	private static String compare(String c1, String c2) {
+		if (c1.compareTo(c2) > c2.compareTo(c1))
+			return c1;
+		else
+			return c2;
 	}
 
 	public static void print(Object... obj) {

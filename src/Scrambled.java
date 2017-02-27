@@ -33,8 +33,8 @@ public class Scrambled {
 		
 		public void push(String ch) {
 			if (Scrambled.isOperator(ch)) {
-				int a = Integer.parseInt(stack.pop());
-				int b = Integer.parseInt(stack.pop());
+				long a = Long.parseLong(stack.pop());
+				long b = Long.parseLong(stack.pop());
 				if (ch.equals("+"))
 					stack.push(String.valueOf(a + b));
 				if (ch.equals("-"))
